@@ -27,9 +27,18 @@ npm run sign:firefox  # 本地 AMO 签名（需环境变量 AMO_JWT_ISSUER/AMO_J
 
 ## 发布（GitHub Actions）
 
-1. 修改 `manifest.json` 的 `version`（商店要求递增）
+两种方式任选：
+
+**网页手动发布**（推荐）：
+1. 修改 `manifest.json` 的 `version`（如 `1.1.0`）并推送到 main
+2. GitHub 网页 → Releases → Draft a new release → 创建 tag `v1.1.0` → Publish
+3. Actions 自动：版本校验 → 双平台打包 → AMO 签名（若启用）→ 资产附加到该 Release
+
+**命令行发布**：
+1. 修改 `manifest.json` 的 `version` 并推送
 2. `git tag v1.1.0 && git push origin v1.1.0`
-3. Actions 自动：版本校验 → 检查 → 双平台打包 → AMO 签名 → GitHub Release 归档
+
+注意：tag 必须是 `v<manifest 版本>`（如 `v1.1.0`），否则版本校验会失败。
 
 更新机制：**Firefox** 安装签名 XPI 后自动更新；**Chrome** 解压加载无自动更新——新标签页横幅提示后，下载 zip 解压覆盖目录并点"重新加载"（待办数据在浏览器侧，不丢失）。
 
