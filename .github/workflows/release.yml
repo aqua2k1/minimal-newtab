@@ -80,7 +80,7 @@ jobs:
   release:
     # sign-firefox 被跳过（AMO 未启用）时不阻塞归档
     needs: [version-check, build, sign-firefox]
-    if: ${{ needs['version-check'].result == 'success' && needs['build'].result == 'success' && (needs['sign-firefox'].result == 'success' || needs['sign-firefox'].result == 'skipped') }}
+    if: ${{ always() && needs['version-check'].result == 'success' && needs['build'].result == 'success' && (needs['sign-firefox'].result == 'success' || needs['sign-firefox'].result == 'skipped') }}
     runs-on: ubuntu-latest
     env:
       GH_TOKEN: ${{ github.token }}
