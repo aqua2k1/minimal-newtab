@@ -96,5 +96,5 @@ jobs:
         run: |
           TAG="v${{ needs['version-check'].outputs.version }}"
           FILES=$(find dist -type f \( -name "*.zip" -o -name "*.xpi" \) | tr '\n' ' ')
-          gh release create "$TAG" $FILES --generate-notes 2>/dev/null \
-            || gh release upload "$TAG" $FILES --clobber
+          gh release create -R aqua2k1/minimal-newtab "$TAG" $FILES --generate-notes 2>/dev/null \
+            || gh release upload -R aqua2k1/minimal-newtab "$TAG" $FILES --clobber
