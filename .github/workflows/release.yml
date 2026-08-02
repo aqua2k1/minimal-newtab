@@ -5,6 +5,7 @@ on:
     tags: ["v*"]
   release:
     types: [published]
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -71,23 +72,23 @@ jobs:
           path: dist/
 
   release:
-    needs: [build, sign-firefox]
+    # sign-firefox 被跳过（AMO 未启用）时不阻塞归档
+    needs: [version-check, build, sign-firefox]
+    if: ${{ needs.version-check.result == 'success' && needs.build.result == 'success' && (needs.sign-firefox.result == 'success' || needs.sign-firefox.result == 'skipped') }}
     runs-on: ubuntu-latest
     env:
       GH_TOKEN: ${{ github.token }}
     steps:
       - uses: actions/download-artifact@v5
         with:
-          name: packages
+          pattern: "*"
           path: dist
-      - uses: actions/download-artifact@v5
-        with:
-          name: signed-xpi
-          path: dist
+          merge-multiple: true
       - name: 核对产物
-        run: ls -la dist
+        run: find dist -type f | sort
       - name: 创建或更新 Release（网页已发布则附加资产）
         run: |
           TAG="v${{ needs.version-check.outputs.version }}"
-          gh release create "$TAG" dist/* --generate-notes 2>/dev/null \
-            || gh release upload "$TAG" dist/* --clobber
+          FILES=$(find dist -type f \( -name "*.zip" -o -name "*.xpi" \) | tr '\n' ' ')
+          gh release create "$TAG" $FILES --generate-notes 2>/dev/null \
+            || gh release upload "$TAG" $FILES --clobber
