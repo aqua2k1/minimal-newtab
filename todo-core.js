@@ -9,10 +9,8 @@ globalThis.TodoCore = (() => {
 	const INLINE_SOURCE =
 		"(`[^`]+`)|(\\*\\*\\*[^*\\n]+\\*\\*\\*)|(\\*\\*[^*\\n]+\\*\\*)|(\\*[^*\\n]+\\*)|(~~[^~\\n]+~~)|(\\[([^\\]\\n]+)\\]\\(([^)\\s]+\\)))|(https?://[^\\s<>\"']+|www\\.[^\\s<>\"']+)";
 
-	const store =
-		globalThis.browser?.storage?.sync ?? globalThis.chrome?.storage?.sync;
-	const storageEvents =
-		globalThis.browser?.storage ?? globalThis.chrome?.storage;
+	const store = globalThis.chrome?.storage?.sync;
+	const storageEvents = globalThis.chrome?.storage;
 
 	function sanitizeUrl(url) {
 		return /^(https?:|mailto:)/i.test(url) ? url : "";

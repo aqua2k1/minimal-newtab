@@ -1,6 +1,6 @@
-// 打包脚本：产出 dist/minimal-newtab-{version}-chrome.zip + -fx.zip
+// 打包脚本：产出 dist/minimal-newtab-{version}-chrome.zip
 import { execSync } from "node:child_process";
-import { cp, mkdir, readdir, readFile, rename, rm } from "node:fs/promises";
+import { cp, mkdir, readFile, rm } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -37,21 +37,4 @@ execSync(`cd ${stage} && zip -r ../${name}-${version}-chrome.zip .`, {
 });
 await rm(stage, { recursive: true });
 
-// Firefox：web-ext build（自动处理清单；--ignore-files 排除非扩展文件）
-execSync(
-	"npx web-ext build --source-dir . --artifacts-dir dist --overwrite-dest" +
-		' --ignore-files "scripts/**" "package.json" "package-lock.json" "biome.jsonc" "README.md" "README.en.md" "*.log"',
-	{
-		stdio: "inherit",
-	},
-);
-const built = (await readdir("dist")).find(
-	(f) => f.endsWith(".zip") && !f.includes("-chrome"),
-);
-if (built) {
-	await rename(`dist/${built}`, `dist/${name}-${version}-fx.zip`);
-}
-
-console.log(
-	`\n构建完成:\n  dist/${name}-${version}-chrome.zip\n  dist/${name}-${version}-fx.zip`,
-);
+console.log(`\n构建完成: dist/${name}-${version}-chrome.zip`);

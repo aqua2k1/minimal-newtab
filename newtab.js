@@ -24,14 +24,7 @@ updateClock();
 setInterval(updateClock, 1000);
 
 function doSearch(query) {
-	// Firefox：用浏览器默认搜索引擎（省略 engine 即默认引擎）
-	if (globalThis.browser && browser.search?.search) {
-		return browser.tabs
-			.getCurrent()
-			.then((tab) => browser.search.search({ query, tabId: tab?.id }))
-			.catch(() => browser.search.search({ query }));
-	}
-	// Chrome：用浏览器默认搜索引擎
+	// chrome.search：用浏览器默认搜索引擎
 	const chromeSearch = globalThis.chrome?.search;
 	if (chromeSearch?.query) {
 		return chromeSearch

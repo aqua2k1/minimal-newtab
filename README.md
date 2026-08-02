@@ -2,7 +2,7 @@
 
 [English](README.en.md) | 中文
 
-极简新标签页扩展（Chrome / Firefox，MV3）：大时钟、日期、搜索（跟随浏览器默认引擎）、同步待办（Markdown 子集 + 自动识别链接）、工具栏弹窗 + 未完成角标。页面完全本地离线。
+极简新标签页扩展（Chrome，MV3）：大时钟、日期、搜索（跟随浏览器默认引擎）、同步待办（Markdown 子集 + 自动识别链接）、工具栏弹窗 + 未完成角标。页面完全本地离线。
 
 ## 功能
 
@@ -17,13 +17,11 @@
 ## 安装
 
 - **Chrome**：`chrome://extensions` → 开发者模式 → 加载已解压的扩展程序 → 选择本目录
-- **Firefox**：`about:debugging` → 临时载入附加组件 → 选择 `manifest.json`（或安装 Release 中的签名 XPI，可自动更新）
 
 ## 开发
 
 ```bash
 npm ci            # 安装依赖
-npm run check     # biome 代码检查 + web-ext 浏览器兼容性校验
-npm run build     # 打包 dist/minimal-newtab-{version}-chrome.zip + -fx.zip
-npm run sign:firefox  # 本地 AMO 签名（需环境变量 AMO_JWT_ISSUER/AMO_JWT_SECRET）
+npm run check     # biome 代码检查
+npm run build     # 打包 dist/minimal-newtab-{version}-chrome.zip
 ```

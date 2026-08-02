@@ -1,7 +1,7 @@
 // 国际化助手：扩展环境走 chrome/browser i18n API（_locales/messages.json）；
 // 脱离扩展直接打开页面（无 i18n API）时回退到内置中文表，保持与 _locales/zh_CN/messages.json 同步。
 globalThis.I18n = (() => {
-	const api = globalThis.browser?.i18n ?? globalThis.chrome?.i18n;
+	const api = globalThis.chrome?.i18n;
 
 	const FALLBACK = {
 		newTabTitle: "新标签页",

@@ -55,32 +55,9 @@ jobs:
           name: packages
           path: dist/
 
-  sign-firefox:
-    # 未配置 AMO 凭据时跳过（Settings → Variables 设 AMO_ENABLED=true 启用）
-    if: ${{ vars.AMO_ENABLED == 'true' }}
-    needs: version-check
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v5
-      - uses: actions/setup-node@v5
-        with:
-          node-version: 22
-          cache: npm
-      - run: npm ci
-      - name: AMO 签名（未列出版本，自动更新通道）
-        run: npx web-ext sign --source-dir . --artifacts-dir dist --channel unlisted
-        env:
-          AMO_JWT_ISSUER: ${{ secrets.AMO_JWT_ISSUER }}
-          AMO_JWT_SECRET: ${{ secrets.AMO_JWT_SECRET }}
-      - uses: actions/upload-artifact@v5
-        with:
-          name: signed-xpi
-          path: dist/
-
   release:
-    # sign-firefox 被跳过（AMO 未启用）时不阻塞归档
-    needs: [version-check, build, sign-firefox]
-    if: ${{ always() && needs['version-check'].result == 'success' && needs['build'].result == 'success' && (needs['sign-firefox'].result == 'success' || needs['sign-firefox'].result == 'skipped') }}
+    needs: [version-check, build]
+    if: ${{ always() && needs['version-check'].result == 'success' && needs['build'].result == 'success' }}
     runs-on: ubuntu-latest
     env:
       GH_TOKEN: ${{ github.token }}
@@ -95,6 +72,6 @@ jobs:
       - name: 创建或更新 Release（网页已发布则附加资产）
         run: |
           TAG="v${{ needs['version-check'].outputs.version }}"
-          FILES=$(find dist -type f \( -name "*.zip" -o -name "*.xpi" \) | tr '\n' ' ')
+          FILES=$(find dist -type f -name "*.zip" | tr '\n' ' ')
           gh release create -R aqua2k1/minimal-newtab "$TAG" $FILES --generate-notes 2>/dev/null \
             || gh release upload -R aqua2k1/minimal-newtab "$TAG" $FILES --clobber

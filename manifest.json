@@ -23,15 +23,6 @@
 		"128": "icons/icon128.png"
 	},
 	"background": {
-		"service_worker": "background.js",
-		"scripts": ["background.js"]
-	},
-	"browser_specific_settings": {
-		"gecko": {
-			"id": "minimal-newtab@local",
-			"data_collection_permissions": {
-				"required": ["none"]
-			}
-		}
+		"service_worker": "background.js"
 	}
 }
