@@ -3,6 +3,7 @@ globalThis.TodoCore = (() => {
 	const TODO_KEY = "todos";
 	const MAX_TODOS = 300;
 	const QUOTA_SAFE_BYTES = 7500; // sync 单键限额 8KB，留余量
+	const t = globalThis.I18n?.t ?? ((key) => key);
 
 	// Markdown 子集：**粗体** *斜体* `代码` ~~删除线~~ [文字](链接) + 自动识别 URL
 	const INLINE_SOURCE =
@@ -166,11 +167,12 @@ globalThis.TodoCore = (() => {
 			const doneCount = todos.length - activeCount;
 
 			if (toggleEl) {
-				toggleEl.textContent = activeCount > 0 ? `待办 ${activeCount}` : "待办";
+				toggleEl.textContent =
+					activeCount > 0 ? t("todoWithCount", activeCount) : t("todo");
 			}
 			if (countEl) {
 				countEl.textContent =
-					doneCount > 0 ? `完成 ${doneCount}/${todos.length}` : "";
+					doneCount > 0 ? t("doneCount", doneCount, todos.length) : "";
 			}
 			if (clearBtn) {
 				clearBtn.hidden = doneCount === 0;
@@ -180,7 +182,7 @@ globalThis.TodoCore = (() => {
 			if (todos.length === 0) {
 				const empty = document.createElement("li");
 				empty.className = "todo-empty";
-				empty.textContent = "暂无待办";
+				empty.textContent = t("todoEmpty");
 				listEl.appendChild(empty);
 				return;
 			}
@@ -194,7 +196,7 @@ globalThis.TodoCore = (() => {
 				const checkbox = document.createElement("input");
 				checkbox.type = "checkbox";
 				checkbox.checked = todo.done;
-				checkbox.title = todo.done ? "标记为未完成" : "标记为完成";
+				checkbox.title = todo.done ? t("markUndone") : t("markDone");
 				checkbox.addEventListener("change", () => {
 					todo.done = checkbox.checked;
 					todos.sort((a, b) => Number(a.done) - Number(b.done));
@@ -251,21 +253,21 @@ globalThis.TodoCore = (() => {
 						return btn;
 					};
 					actions.appendChild(
-						makeBtn("↑", "上移", index === 0, () => moveTodoBy(index, -1)),
+						makeBtn("↑", t("moveUp"), index === 0, () => moveTodoBy(index, -1)),
 					);
 					actions.appendChild(
-						makeBtn("↓", "下移", index === todos.length - 1, () =>
+						makeBtn("↓", t("moveDown"), index === todos.length - 1, () =>
 							moveTodoBy(index, 1),
 						),
 					);
 					actions.appendChild(
-						makeBtn("✎", "编辑", false, () => {
+						makeBtn("✎", t("edit"), false, () => {
 							editingId = todo.id;
 							render();
 						}),
 					);
 					actions.appendChild(
-						makeBtn("✕", "删除", false, () => {
+						makeBtn("✕", t("delete"), false, () => {
 							todos = todos.filter((t) => t.id !== todo.id);
 							save();
 							render();

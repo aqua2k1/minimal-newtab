@@ -1,16 +1,13 @@
-const WEEKDAYS = [
-	"星期日",
-	"星期一",
-	"星期二",
-	"星期三",
-	"星期四",
-	"星期五",
-	"星期六",
-];
-
 const timeEl = document.getElementById("time");
 const secondsEl = document.getElementById("seconds");
 const dateEl = document.getElementById("date");
+
+const dateFormatter = new Intl.DateTimeFormat(I18n.uiLanguage(), {
+	year: "numeric",
+	month: "long",
+	day: "numeric",
+	weekday: "long",
+});
 
 function pad(n) {
 	return String(n).padStart(2, "0");
@@ -20,14 +17,7 @@ function updateClock() {
 	const now = new Date();
 	timeEl.textContent = `${pad(now.getHours())}:${pad(now.getMinutes())}`;
 	secondsEl.textContent = pad(now.getSeconds());
-	dateEl.textContent =
-		now.getFullYear() +
-		"年" +
-		(now.getMonth() + 1) +
-		"月" +
-		now.getDate() +
-		"日 " +
-		WEEKDAYS[now.getDay()];
+	dateEl.textContent = dateFormatter.format(now);
 }
 
 updateClock();
@@ -93,7 +83,7 @@ function maybeShowBanner(latest, dismissedVersion) {
 	}
 	const banner = document.getElementById("update-banner");
 	const link = document.getElementById("update-link");
-	link.textContent = `发现新版本 v${latest} · 下载更新`;
+	link.textContent = I18n.t("updateAvailable", latest);
 	banner.hidden = false;
 }
 

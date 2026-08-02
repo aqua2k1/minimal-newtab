@@ -6,4 +6,5 @@ package.json
 package-lock.json
 biome.jsonc
 README.md
+README.en.md
 *.log

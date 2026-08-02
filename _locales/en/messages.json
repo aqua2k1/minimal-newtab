@@ -1,0 +1,87 @@
+{
+	"extName": {
+		"message": "Minimal New Tab"
+	},
+	"extDescription": {
+		"message": "A minimal local new tab page: clock, date, and a search box using your browser's default search engine."
+	},
+	"extActionTitle": {
+		"message": "Todo"
+	},
+	"newTabTitle": {
+		"message": "New Tab"
+	},
+	"searchPlaceholder": {
+		"message": "Search"
+	},
+	"todo": {
+		"message": "Todo"
+	},
+	"todoWithCount": {
+		"message": "Todo $1$",
+		"placeholders": {
+			"1": {
+				"content": "$1",
+				"description": "Number of active todos"
+			}
+		}
+	},
+	"addTodoPlaceholder": {
+		"message": "Add todo…"
+	},
+	"todoHint": {
+		"message": "Supports **bold** *italic* `code` ~~strikethrough~~ [links](url) · URLs are auto-detected"
+	},
+	"clearDone": {
+		"message": "Clear completed"
+	},
+	"todoEmpty": {
+		"message": "No todos"
+	},
+	"doneCount": {
+		"message": "Done $1$/$2$",
+		"placeholders": {
+			"1": {
+				"content": "$1",
+				"description": "Number of completed todos"
+			},
+			"2": {
+				"content": "$2",
+				"description": "Total number of todos"
+			}
+		}
+	},
+	"markDone": {
+		"message": "Mark as done"
+	},
+	"markUndone": {
+		"message": "Mark as not done"
+	},
+	"moveUp": {
+		"message": "Move up"
+	},
+	"moveDown": {
+		"message": "Move down"
+	},
+	"edit": {
+		"message": "Edit"
+	},
+	"delete": {
+		"message": "Delete"
+	},
+	"updateAvailable": {
+		"message": "New version v$1$ available · Download",
+		"placeholders": {
+			"1": {
+				"content": "$1",
+				"description": "Latest version number"
+			}
+		}
+	},
+	"downloadUpdate": {
+		"message": "Download update"
+	},
+	"dismissUpdate": {
+		"message": "Dismiss this version"
+	}
+}

@@ -1,14 +1,15 @@
 {
 	"manifest_version": 3,
-	"name": "简洁新标签页",
+	"name": "__MSG_extName__",
 	"version": "1.0.0",
-	"description": "本地极简新标签页：时钟、日期、跟随浏览器默认搜索引擎的搜索框。",
+	"description": "__MSG_extDescription__",
+	"default_locale": "zh_CN",
 	"chrome_url_overrides": {
 		"newtab": "newtab.html"
 	},
 	"permissions": ["search", "storage"],
 	"action": {
-		"default_title": "待办",
+		"default_title": "__MSG_extActionTitle__",
 		"default_popup": "popup.html",
 		"default_icon": {
 			"16": "icons/icon16.png",

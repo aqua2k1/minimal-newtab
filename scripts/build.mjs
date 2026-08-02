@@ -25,6 +25,8 @@ const files = [
 	"popup.css",
 	"todo-core.js",
 	"background.js",
+	"i18n.js",
+	"_locales",
 	"icons",
 ];
 for (const f of files) {
@@ -38,7 +40,7 @@ await rm(stage, { recursive: true });
 // Firefox：web-ext build（自动处理清单；--ignore-files 排除非扩展文件）
 execSync(
 	"npx web-ext build --source-dir . --artifacts-dir dist --overwrite-dest" +
-		' --ignore-files "scripts/**" "package.json" "package-lock.json" "biome.jsonc" "README.md" "*.log"',
+		' --ignore-files "scripts/**" "package.json" "package-lock.json" "biome.jsonc" "README.md" "README.en.md" "*.log"',
 	{
 		stdio: "inherit",
 	},

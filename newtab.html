@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
-  <title>新标签页</title>
+  <title>__MSG_newTabTitle__</title>
   <link rel="icon" href="icons/icon32.png">
   <link rel="stylesheet" href="styles.css">
 </head>
@@ -13,27 +13,28 @@
     </div>
     <p id="date" class="date"></p>
     <form id="search-form" class="search-form" autocomplete="off">
-      <input id="search-input" type="text" placeholder="搜索" aria-label="搜索">
+      <input id="search-input" type="text" placeholder="__MSG_searchPlaceholder__" aria-label="__MSG_searchPlaceholder__">
     </form>
     <div class="update-banner" id="update-banner" hidden>
-      <a id="update-link" href="https://github.com/aqua2k1/minimal-newtab/releases/latest" target="_blank" rel="noopener noreferrer" aria-label="下载更新"></a>
-      <button id="update-dismiss" type="button" title="忽略此版本">✕</button>
+      <a id="update-link" href="https://github.com/aqua2k1/minimal-newtab/releases/latest" target="_blank" rel="noopener noreferrer" aria-label="__MSG_downloadUpdate__"></a>
+      <button id="update-dismiss" type="button" title="__MSG_dismissUpdate__">✕</button>
     </div>
     <section class="todo">
-      <button class="todo-toggle" id="todo-toggle" type="button">待办</button>
+      <button class="todo-toggle" id="todo-toggle" type="button">__MSG_todo__</button>
       <div class="todo-panel" id="todo-panel" hidden>
         <form class="todo-add" id="todo-add-form" autocomplete="off">
-          <input id="todo-input" type="text" placeholder="添加待办…" maxlength="100">
-          <p class="todo-hint">支持 **粗体** *斜体* `代码` ~~删除线~~ [链接](url) · 直接输入网址自动识别</p>
+          <input id="todo-input" type="text" placeholder="__MSG_addTodoPlaceholder__" maxlength="100">
+          <p class="todo-hint">__MSG_todoHint__</p>
         </form>
         <ul class="todo-list" id="todo-list"></ul>
         <footer class="todo-footer">
           <span id="todo-summary"></span>
-          <button id="todo-clear" type="button" hidden>清空已完成</button>
+          <button id="todo-clear" type="button" hidden>__MSG_clearDone__</button>
         </footer>
       </div>
     </section>
   </main>
+  <script src="i18n.js"></script>
   <script src="todo-core.js"></script>
   <script src="newtab.js"></script>
 </body>

@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
-  <title>待办</title>
+  <title>__MSG_todo__</title>
   <link rel="icon" href="icons/icon32.png">
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="popup.css">
@@ -10,15 +10,16 @@
 <body>
   <div class="todo-panel popup-panel">
     <form class="todo-add" id="popup-add-form" autocomplete="off">
-      <input id="popup-input" type="text" placeholder="添加待办…" maxlength="100">
-      <p class="todo-hint">支持 **粗体** *斜体* `代码` ~~删除线~~ [链接](url) · 直接输入网址自动识别</p>
+      <input id="popup-input" type="text" placeholder="__MSG_addTodoPlaceholder__" maxlength="100">
+      <p class="todo-hint">__MSG_todoHint__</p>
     </form>
     <ul class="todo-list" id="popup-list"></ul>
     <footer class="todo-footer">
       <span id="popup-count"></span>
-      <button id="popup-clear" type="button" hidden>清空已完成</button>
+      <button id="popup-clear" type="button" hidden>__MSG_clearDone__</button>
     </footer>
   </div>
+  <script src="i18n.js"></script>
   <script src="todo-core.js"></script>
   <script src="popup.js"></script>
 </body>

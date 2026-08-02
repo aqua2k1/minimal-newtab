@@ -1,0 +1,87 @@
+{
+	"extName": {
+		"message": "简洁新标签页"
+	},
+	"extDescription": {
+		"message": "本地极简新标签页：时钟、日期、跟随浏览器默认搜索引擎的搜索框。"
+	},
+	"extActionTitle": {
+		"message": "待办"
+	},
+	"newTabTitle": {
+		"message": "新标签页"
+	},
+	"searchPlaceholder": {
+		"message": "搜索"
+	},
+	"todo": {
+		"message": "待办"
+	},
+	"todoWithCount": {
+		"message": "待办 $1$",
+		"placeholders": {
+			"1": {
+				"content": "$1",
+				"description": "未完成待办数量"
+			}
+		}
+	},
+	"addTodoPlaceholder": {
+		"message": "添加待办…"
+	},
+	"todoHint": {
+		"message": "支持 **粗体** *斜体* `代码` ~~删除线~~ [链接](url) · 直接输入网址自动识别"
+	},
+	"clearDone": {
+		"message": "清空已完成"
+	},
+	"todoEmpty": {
+		"message": "暂无待办"
+	},
+	"doneCount": {
+		"message": "完成 $1$/$2$",
+		"placeholders": {
+			"1": {
+				"content": "$1",
+				"description": "已完成数量"
+			},
+			"2": {
+				"content": "$2",
+				"description": "总待办数量"
+			}
+		}
+	},
+	"markDone": {
+		"message": "标记为完成"
+	},
+	"markUndone": {
+		"message": "标记为未完成"
+	},
+	"moveUp": {
+		"message": "上移"
+	},
+	"moveDown": {
+		"message": "下移"
+	},
+	"edit": {
+		"message": "编辑"
+	},
+	"delete": {
+		"message": "删除"
+	},
+	"updateAvailable": {
+		"message": "发现新版本 v$1$ · 下载更新",
+		"placeholders": {
+			"1": {
+				"content": "$1",
+				"description": "最新版本号"
+			}
+		}
+	},
+	"downloadUpdate": {
+		"message": "下载更新"
+	},
+	"dismissUpdate": {
+		"message": "忽略此版本"
+	}
+}
