@@ -1,0 +1,20 @@
+name: Scratch
+on: workflow_dispatch
+jobs:
+  maybe-skip:
+    if: ${{ vars.AMO_ENABLED == 'true' }}
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo skipped-if-false
+  A-bracket:
+    needs: [maybe-skip]
+    if: ${{ needs['maybe-skip'].result == 'success' || needs['maybe-skip'].result == 'skipped' }}
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "A-bracket ran, result=$(echo ${{ needs['maybe-skip'].result }})"
+  B-always:
+    needs: [maybe-skip]
+    if: ${{ always() && (needs['maybe-skip'].result == 'success' || needs['maybe-skip'].result == 'skipped') }}
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "B-always ran"
