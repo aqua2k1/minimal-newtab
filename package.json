@@ -1,6 +1,5 @@
 {
 	"name": "minimal-newtab",
-	"version": "1.0.0",
 	"private": true,
 	"description": "简洁新标签页：时钟、日期、搜索、同步待办（Chrome/Firefox MV3）",
 	"scripts": {
