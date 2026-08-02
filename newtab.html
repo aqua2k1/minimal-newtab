@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>新标签页</title>
+  <link rel="icon" href="icons/icon32.png">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main>
+    <div class="clock">
+      <span id="time">00:00</span><span id="seconds" class="seconds">00</span>
+    </div>
+    <p id="date" class="date"></p>
+    <form id="search-form" class="search-form" autocomplete="off">
+      <input id="search-input" type="text" placeholder="搜索" aria-label="搜索">
+    </form>
+    <div class="update-banner" id="update-banner" hidden>
+      <a id="update-link" href="https://github.com/aqua2k1/minimal-newtab/releases/latest" target="_blank" rel="noopener noreferrer" aria-label="下载更新"></a>
+      <button id="update-dismiss" type="button" title="忽略此版本">✕</button>
+    </div>
+    <section class="todo">
+      <button class="todo-toggle" id="todo-toggle" type="button">待办</button>
+      <div class="todo-panel" id="todo-panel" hidden>
+        <form class="todo-add" id="todo-add-form" autocomplete="off">
+          <input id="todo-input" type="text" placeholder="添加待办…" maxlength="100">
+          <p class="todo-hint">支持 **粗体** *斜体* `代码` ~~删除线~~ [链接](url) · 直接输入网址自动识别</p>
+        </form>
+        <ul class="todo-list" id="todo-list"></ul>
+        <footer class="todo-footer">
+          <span id="todo-summary"></span>
+          <button id="todo-clear" type="button" hidden>清空已完成</button>
+        </footer>
+      </div>
+    </section>
+  </main>
+  <script src="todo-core.js"></script>
+  <script src="newtab.js"></script>
+</body>
+</html>

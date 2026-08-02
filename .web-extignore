@@ -1,0 +1,9 @@
+node_modules/
+dist/
+.github/
+scripts/
+package.json
+package-lock.json
+biome.jsonc
+README.md
+*.log

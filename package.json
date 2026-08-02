@@ -1,0 +1,15 @@
+{
+	"name": "minimal-newtab",
+	"version": "1.0.0",
+	"private": true,
+	"description": "简洁新标签页：时钟、日期、搜索、同步待办（Chrome/Firefox MV3）",
+	"scripts": {
+		"check": "biome check && web-ext lint --source-dir .",
+		"build": "node scripts/build.mjs",
+		"sign:firefox": "web-ext sign --source-dir . --artifacts-dir dist --channel unlisted"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "^2.5.5",
+		"web-ext": "^8.5.0"
+	}
+}

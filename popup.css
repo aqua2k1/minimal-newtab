@@ -1,0 +1,15 @@
+/* 弹窗仅调整窗口尺寸，样式完全复用 styles.css（与 NTP 页面一致） */
+
+html,
+body {
+	height: auto;
+}
+
+body {
+	width: 340px;
+	background: var(--bg);
+}
+
+.popup-panel {
+	margin: 10px;
+}
