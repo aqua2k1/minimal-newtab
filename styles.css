@@ -150,6 +150,10 @@ main {
 	font-size: 13px;
 }
 
+.update-banner[hidden] {
+	display: none;
+}
+
 .update-banner a {
 	color: var(--accent);
 	text-decoration: none;
